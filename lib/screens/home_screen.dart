@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prayer_circle/screens/prayer_form_screen.dart';
 import 'package:prayer_circle/widgets/prayer_list.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -41,12 +42,25 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(widget.title),
       ),
       body: const PrayerList(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return PrayerFormScreen();
+              },
+            ),
+          );
+        },
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
       bottomNavigationBar: NavigationBar(
           indicatorColor: Colors.deepOrangeAccent,
           selectedIndex: _selectedIndex,
-          onDestinationSelected: (value) => {
-                setState(() => _selectedIndex = value)
-              },
+          onDestinationSelected: (value) =>
+              {setState(() => _selectedIndex = value)},
           destinations: const [
             NavigationDestination(
               icon: Icon(Icons.home),
